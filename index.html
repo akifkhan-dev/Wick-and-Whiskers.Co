@@ -24,43 +24,9 @@ dialog{padding:0;border:0;width:100vw;max-width:none;height:100dvh;max-height:no
 /* scroll storytelling */
 .reveal-ready .reveal{opacity:0;transform:translateY(28px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}.reveal-ready .reveal.visible{opacity:1;transform:none}.reveal-ready .card.reveal{transition-delay:var(--delay,0ms)}
 @media(max-width:800px){.wrap{width:calc(100% - 36px)}.heroLayout{grid-template-columns:1fr 1fr;gap:28px}.heroArt{min-height:430px}.hero h1{font-size:clamp(50px,8vw,74px)}.section{padding:80px 0}.featureLayout{grid-template-columns:1fr}.featureVisual{min-height:460px}.featureCopy{padding:65px 9vw}.candleBlock{gap:30px}.viewer{grid-template-columns:minmax(0,1fr) 285px}.viewerStage{padding:60px 48px 100px}.viewerInfo{padding:40px 22px}}
-@media(max-width:600px){.wrap{width:calc(100% - 32px)}nav{height:68px}.navlinks{display:none}.brand b{font-size:17px}.brandMark{width:34px;height:34px}.nav>.pill{padding:10px 12px;font-size:10px}.announce{font-size:8px}.hero{padding:35px 0 45px;min-height:0}.heroLayout{grid-template-columns:1fr;gap:32px}.hero h1{font-size:clamp(55px,14vw,78px);margin:18px 0}.heroCopy{font-size:12px}.heroMeta{margin-top:25px}.heroArt{min-height:390px}.heroPhoto{inset:0 7% 0 0}.heroStamp{width:105px;height:105px;font-size:15px}.heroIndex{right:0}.section{padding:72px 0}.sectionIntro{display:block;margin-bottom:30px}.sectionIntro h2{font-size:47px}.sectionIntro p{margin-top:17px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:35px 12px}.card,.card:nth-child(3n + 2),.card:nth-child(3n){grid-column:span 1;transform:none}.card:nth-child(odd){margin-top:0}.cover{aspect-ratio:3/4}.cover:after{display:none}.cardText h3{font-size:18px}.cardText p{font-size:10px}.cardNum{font-size:9px}.cardView{font-size:10px}.featureVisual{min-height:390px}.featureCopy{padding:55px 25px}.featureCopy h2{font-size:49px}.candleBlock{grid-template-columns:1fr;gap:28px}.candleVisual{height:290px}.story{padding:85px 0}.story h2{font-size:48px}.contact{padding:70px 0}.footTop,.footBottom{align-items:flex-start;flex-direction:column}.footLinks{flex-wrap:wrap}.float{right:14px;bottom:14px}.viewer{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}.viewerStage{padding:52px 35px 82px;min-height:0}.viewerInfo{padding:17px 20px 20px;gap:5px}.viewerInfo h2{font-size:26px}.viewerInfo p{font-size:11px;line-height:1.45}.viewerInfo .pill{margin-top:7px}.viewerInfo .index{font-size:9px}.viewerTop{top:16px;left:17px;font-size:8px}.viewerNav{width:34px;height:34px;font-size:20px}#prev{left:6px}#next{right:6px}.thumbs{bottom:10px}.thumbs button{flex-basis:45px;height:45px}.close{right:12px;top:10px;width:34px;height:34px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal-ready .reveal{opacity:1;transform:none}}
-
-/* Wick & Whiskers editorial motion refresh */
-:root{--paper:#F6F5F0;--cream:#E7ECE2;--ink:#0F1011;--muted:#687064;--rust:#20360E;--line:#d6ddcf;--sage:#E7ECE2;--dark:#20360E;--honey:#FABC0F;--amber:#FBAA19}
-body{background:var(--paper);color:var(--ink)}
-.announce{background:var(--rust);color:#f6f5f0}
-header{background:#f6f5f0d9;border-color:#20360e20;box-shadow:0 10px 40px #20360e0a}
-.pill{background:var(--rust);border-color:var(--rust);border-radius:999px}.pill:hover{background:var(--honey);border-color:var(--honey);color:var(--ink)}
-.kicker,.cardNum,.cardView{color:var(--rust)}
-.hero h1,.sectionIntro h2,.featureCopy h2,.candleBlock h2,.story h2,.contact h2{letter-spacing:-.055em}
-.hero h1 em,.story h2 em{color:var(--honey)}
-.heroStamp{background:var(--honey);color:var(--ink);box-shadow:0 16px 45px #20360e25}
-.ticker{background:var(--rust);border-color:#20360e;color:#f6f5f0}.ticker i{color:var(--honey)}
-.feature{background:var(--rust)}.featureCopy .kicker{color:var(--honey)}.featureCopy .pill{border-color:#f6f5f080}.featureCopy .pill:hover{color:var(--ink)}
-.candles{background:var(--sage)}.candleVisual{background:#dce5d5}.candleVisual:before{color:var(--rust)}
-.contact{background:var(--sage)}.float{background:var(--rust);border:1px solid #ffffff50;backdrop-filter:blur(14px);box-shadow:0 12px 36px #20360e30}.float:hover{background:var(--honey);color:var(--ink)}
-.card .cover{border-radius:3px}.cover:after{background:var(--honey);color:var(--ink)}
-/* top progress, curtain entry, staggered editorial copy */
-#scrollProgress{position:fixed;inset:0 auto auto 0;height:3px;width:0;background:var(--honey);z-index:1000;transform-origin:left}
-#pageCurtain{position:fixed;inset:0;background:var(--rust);z-index:999;pointer-events:none;animation:curtainLift .9s cubic-bezier(.76,0,.24,1) .15s forwards}
-#pageCurtain:after{content:'WICK & WHISKERS';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:500 12px 'DM Sans',sans-serif;letter-spacing:.24em;color:var(--paper);white-space:nowrap;animation:curtainLabel .45s ease .25s forwards}
-@keyframes curtainLift{to{transform:translateY(-100%)}}
-@keyframes curtainLabel{to{opacity:0;transform:translate(-50%,-70%)}}
-.heroWords .kicker,.heroWords h1,.heroWords .heroCopy,.heroWords .heroActions,.heroWords .heroMeta{animation:heroRise .75s cubic-bezier(.2,.7,.2,1) both}
-.heroWords h1{animation-delay:.12s}.heroWords .heroCopy{animation-delay:.22s}.heroWords .heroActions{animation-delay:.32s}.heroWords .heroMeta{animation-delay:.42s}
-@keyframes heroRise{from{opacity:0;transform:translateY(26px);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:none;clip-path:inset(0)}}
-.heroPhoto img,.featureVisual img{will-change:transform}.reveal-ready .reveal{transform:translateY(34px);filter:blur(2px)}.reveal-ready .reveal.visible{filter:none}
-@media(max-width:600px){#pageCurtain:after{font-size:10px}.heroWords h1{animation-delay:.08s}}
-@media(prefers-reduced-motion:reduce){#pageCurtain{display:none}.heroWords .kicker,.heroWords h1,.heroWords .heroCopy,.heroWords .heroActions,.heroWords .heroMeta{animation:none}}
-
-/* Scroll-led product chapter: pinned stage, depth and reversible scroll progress */
-.feature.scroll-scene{min-height:185vh;padding:0;overflow:clip}.feature.scroll-scene .featureLayout{position:sticky;top:0;min-height:100svh;height:100svh;grid-template-columns:1.08fr .92fr;overflow:hidden}.feature.scroll-scene .featureVisual{min-height:100%;height:100%}.feature.scroll-scene .featureCopy{opacity:0;will-change:transform,opacity}.feature.scroll-scene .featureVisual img{will-change:transform;transform-origin:center}.heroArt,.heroWords{will-change:transform}.heroPhoto{overflow:hidden}.heroPhoto img{transform-origin:center;will-change:transform}.sectionIntro h2,.featureCopy h2,.candleCopy h2,.story h2,.contact h2{text-wrap:balance}.card{transition:transform .55s cubic-bezier(.2,.7,.2,1),box-shadow .55s}.card:hover{transform:translateY(-9px)}
-@media(max-width:760px){.feature.scroll-scene{min-height:auto}.feature.scroll-scene .featureLayout{position:relative;top:auto;height:auto;min-height:0;grid-template-columns:1fr}.feature.scroll-scene .featureVisual{height:62vh;min-height:420px}.feature.scroll-scene .featureCopy{opacity:1!important;transform:none!important}.heroArt,.heroWords{will-change:auto}}
-@media(prefers-reduced-motion:reduce){#scrollProgress{display:none}.card{transition:none}}
 </style></head>
-<body>\n<div id="scrollProgress" aria-hidden="true"></div>
+<body>
+<div id="scrollProgress" aria-hidden="true"></div>
 <div class="announce">Thoughtful little finds · cozy comforts for home & heart</div>
 <header><nav class="wrap"><a class="brand" href="#home"><span class="brandMark">✦</span><span><b>Wick & Whiskers</b><small>Co. · Little things, lovely moments</small></span></a><div class="navlinks"><a href="#bracelets">Bracelets</a><a href="#candles">Candles</a><a href="#story">Our story</a></div><a class="pill" href="https://wa.me/916363065642" target="_blank" rel="noopener">Enquire ↗</a></nav></header>
 <main>

@@ -90,7 +90,8 @@ dialog{opacity:0;transform:translateY(28px) scale(.985);transition:opacity .4s e
 @media(prefers-reduced-motion:reduce){#pageCurtain{display:none}#scrollProgress{transform:scaleX(0)!important}.line-inner{transform:none;opacity:1}.reveal-ready .reveal{opacity:1;transform:none;filter:none}.curtain-media{clip-path:none}.tickerTrack{animation:none!important}}
 </style></head>
 <body>
-<div id="scrollProgress" aria-hidden="true"></div><div id="pageCurtain" aria-hidden="true"><div class="curtainTop"><span>WICK & WHISKERS CO.</span><span>OBJECTS OF AFFECTION</span></div><div class="curtainCounter"><span id="curtainCount">00</span><span class="curtainBar"><i id="curtainBar"></i></span><span>LOADING THE LITTLE THINGS</span></div></div><div id="custom-cursor" aria-hidden="true">VIEW</div>\n<div id="scrollProgress" aria-hidden="true"></div><div id="pageCurtain" aria-hidden="true"></div>
+<div id="scrollProgress" aria-hidden="true"></div><div id="pageCurtain" aria-hidden="true"><div class="curtainTop"><span>WICK & WHISKERS CO.</span><span>OBJECTS OF AFFECTION</span></div><div class="curtainCounter"><span id="curtainCount">00</span><span class="curtainBar"><i id="curtainBar"></i></span><span>LOADING THE LITTLE THINGS</span></div></div><div id="custom-cursor" aria-hidden="true">VIEW</div>
+<div id="scrollProgress" aria-hidden="true"></div><div id="pageCurtain" aria-hidden="true"></div>
 <div class="announce">Thoughtful little finds · cozy comforts for home & heart</div>
 <header><nav class="wrap"><a class="brand" href="#home"><span class="brandMark">✦</span><span><b>Wick & Whiskers</b><small>Co. · Little things, lovely moments</small></span></a><div class="navlinks"><a href="#bracelets">Bracelets</a><a href="#candles">Candles</a><a href="#story">Our story</a></div><a class="pill" href="https://wa.me/916363065642" target="_blank" rel="noopener">Enquire ↗</a></nav></header>
 <main>
@@ -106,7 +107,8 @@ dialog{opacity:0;transform:translateY(28px) scale(.985);transition:opacity .4s e
 <a class="float" href="https://wa.me/916363065642" target="_blank" rel="noopener">WhatsApp ↗</a>
 <dialog id="productDialog" aria-label="Product photo gallery"><div class="viewer"><div class="viewerStage"><div class="viewerTop">Wick & Whiskers · Product gallery</div><button class="viewerNav" id="prev" aria-label="Previous photo">‹</button><img id="modalImage" alt="" title="Click to zoom"><button class="viewerNav" id="next" aria-label="Next photo">›</button><div class="thumbs" id="thumbs"></div></div><div class="viewerInfo"><button class="close" id="close" aria-label="Close gallery">×</button><div class="index" id="modalIndex"></div><h2 id="modalTitle"></h2><p id="modalDesc"></p><div class="viewerCount" id="modalCount"></div><a class="pill" id="orderLink" target="_blank" rel="noopener">Enquire about this bracelet ↗</a></div></div></dialog>
 <script>
-const progress=document.getElementById('scrollProgress');function updateProgress(){const max=document.documentElement.scrollHeight-window.innerHeight;progress.style.width=(max>0?window.scrollY/max*100:0)+'%'}window.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',updateProgress);updateProgress();\nconst products=[
+const progress=document.getElementById('scrollProgress');function updateProgress(){const max=document.documentElement.scrollHeight-window.innerHeight;progress.style.width=(max>0?window.scrollY/max*100:0)+'%'}window.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',updateProgress);updateProgress();
+const products=[
 {id:1,name:'Interlock Gold Cuff',desc:'An open gold-tone cuff with a sculptural interlocking detail.',images:['1 of Front.jpg','1 of side.jpg','1 of Top.jpg','1 of top measurement.jpg']},
 {id:2,name:'Double Heart Cuff',desc:'A delicate gold-tone cuff finished with two open hearts.',images:['2 of front.jpg','2 of side.jpg','2 of top.jpg','2 of top measurement.jpg']},
 {id:3,name:'Sculpted Gold Cuff',desc:'A minimal gold-tone cuff with a softly sculpted finish.',images:['3 of front.jpg','3 of side.jpg','3 of top.jpg','3 of top measurement.jpg']},
@@ -130,7 +132,6 @@ const heroImage=document.getElementById('heroImage'),featureImage=document.getEl
 
 /* Motion systems adapted from the uploaded visual reference */
 const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-const progress=document.getElementById('scrollProgress');
 const curtain=document.getElementById('pageCurtain');
 const count=document.getElementById('curtainCount');
 const bar=document.getElementById('curtainBar');
@@ -139,9 +140,9 @@ if(!reduceMotion&&curtain){
  function loadTick(now){if(!start)start=now;const t=Math.min(1,(now-start)/duration),v=Math.round((1-Math.pow(1-t,3))*100);if(count)count.textContent=String(v).padStart(2,'0');if(bar)bar.style.width=v+'%';if(t<1)requestAnimationFrame(loadTick);else{setTimeout(()=>{curtain.classList.add('is-done');setTimeout(()=>document.body.classList.add('hero-ready'),160)},100)}}
  requestAnimationFrame(loadTick);
 }else{document.body.classList.add('hero-ready')}
-let lastY=scrollY,velocity=0,marqueeX=0,cursorX=-100,cursorY=-100,targetX=-100,targetY=-100,cursorOn=false,raf=false;
+let lastY=scrollY,velocity=0,marqueeX=0,cursorX=-100,cursorY=-100,targetX=-100,targetY=-100,cursorOn=false,motionRaf=false;
 const cursor=document.getElementById('custom-cursor');
-function scheduleMotion(){if(!raf){raf=true;requestAnimationFrame(motionFrame)}}
+function scheduleMotion(){if(!motionRaf){motionRaf=true;requestAnimationFrame(motionFrame)}}
 function motionFrame(){
  const y=scrollY,max=document.documentElement.scrollHeight-innerHeight,ratio=max>0?Math.max(0,Math.min(1,y/max)):0;
  if(progress)progress.style.transform='scaleX('+ratio+')';
@@ -151,7 +152,7 @@ function motionFrame(){
   const track=document.querySelector('.tickerTrack');if(track){const half=track.scrollWidth/2;marqueeX-=.75+Math.min(8,velocity*.14);if(Math.abs(marqueeX)>=half)marqueeX+=half;track.style.transform='translate3d('+marqueeX.toFixed(2)+'px,0,0)'}
   if(cursor&&matchMedia('(pointer: fine)').matches){cursorX+=(targetX-cursorX)*.18;cursorY+=(targetY-cursorY)*.18;cursor.style.transform='translate3d('+cursorX.toFixed(1)+'px,'+cursorY.toFixed(1)+'px,0) scale('+(cursorOn?1:.35)+')'}
  }
- raf=false;
+ motionRaf=false;
 }
 if(!reduceMotion){addEventListener('scroll',scheduleMotion,{passive:true});addEventListener('resize',scheduleMotion);scheduleMotion()}
 if(cursor&&matchMedia('(pointer: fine)').matches){addEventListener('mousemove',e=>{targetX=e.clientX-41;targetY=e.clientY-41});document.querySelectorAll('[data-cursor-view]').forEach(zone=>{zone.addEventListener('mouseenter',()=>{cursorOn=true;cursor.classList.add('is-active')});zone.addEventListener('mouseleave',()=>{cursorOn=false;cursor.classList.remove('is-active')})})}

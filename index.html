@@ -26,8 +26,36 @@ dialog{padding:0;border:0;width:100vw;max-width:none;height:100dvh;max-height:no
 @media(max-width:800px){.wrap{width:calc(100% - 36px)}.heroLayout{grid-template-columns:1fr 1fr;gap:28px}.heroArt{min-height:430px}.hero h1{font-size:clamp(50px,8vw,74px)}.section{padding:80px 0}.featureLayout{grid-template-columns:1fr}.featureVisual{min-height:460px}.featureCopy{padding:65px 9vw}.candleBlock{gap:30px}.viewer{grid-template-columns:minmax(0,1fr) 285px}.viewerStage{padding:60px 48px 100px}.viewerInfo{padding:40px 22px}}
 @media(max-width:600px){.wrap{width:calc(100% - 32px)}nav{height:68px}.navlinks{display:none}.brand b{font-size:17px}.brandMark{width:34px;height:34px}.nav>.pill{padding:10px 12px;font-size:10px}.announce{font-size:8px}.hero{padding:35px 0 45px;min-height:0}.heroLayout{grid-template-columns:1fr;gap:32px}.hero h1{font-size:clamp(55px,14vw,78px);margin:18px 0}.heroCopy{font-size:12px}.heroMeta{margin-top:25px}.heroArt{min-height:390px}.heroPhoto{inset:0 7% 0 0}.heroStamp{width:105px;height:105px;font-size:15px}.heroIndex{right:0}.section{padding:72px 0}.sectionIntro{display:block;margin-bottom:30px}.sectionIntro h2{font-size:47px}.sectionIntro p{margin-top:17px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:35px 12px}.card,.card:nth-child(3n + 2),.card:nth-child(3n){grid-column:span 1;transform:none}.card:nth-child(odd){margin-top:0}.cover{aspect-ratio:3/4}.cover:after{display:none}.cardText h3{font-size:18px}.cardText p{font-size:10px}.cardNum{font-size:9px}.cardView{font-size:10px}.featureVisual{min-height:390px}.featureCopy{padding:55px 25px}.featureCopy h2{font-size:49px}.candleBlock{grid-template-columns:1fr;gap:28px}.candleVisual{height:290px}.story{padding:85px 0}.story h2{font-size:48px}.contact{padding:70px 0}.footTop,.footBottom{align-items:flex-start;flex-direction:column}.footLinks{flex-wrap:wrap}.float{right:14px;bottom:14px}.viewer{grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) auto}.viewerStage{padding:52px 35px 82px;min-height:0}.viewerInfo{padding:17px 20px 20px;gap:5px}.viewerInfo h2{font-size:26px}.viewerInfo p{font-size:11px;line-height:1.45}.viewerInfo .pill{margin-top:7px}.viewerInfo .index{font-size:9px}.viewerTop{top:16px;left:17px;font-size:8px}.viewerNav{width:34px;height:34px;font-size:20px}#prev{left:6px}#next{right:6px}.thumbs{bottom:10px}.thumbs button{flex-basis:45px;height:45px}.close{right:12px;top:10px;width:34px;height:34px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal-ready .reveal{opacity:1;transform:none}}
+
+/* Wick & Whiskers editorial motion refresh */
+:root{--paper:#F6F5F0;--cream:#E7ECE2;--ink:#0F1011;--muted:#687064;--rust:#20360E;--line:#d6ddcf;--sage:#E7ECE2;--dark:#20360E;--honey:#FABC0F;--amber:#FBAA19}
+body{background:var(--paper);color:var(--ink)}
+.announce{background:var(--rust);color:#f6f5f0}
+header{background:#f6f5f0d9;border-color:#20360e20;box-shadow:0 10px 40px #20360e0a}
+.pill{background:var(--rust);border-color:var(--rust);border-radius:999px}.pill:hover{background:var(--honey);border-color:var(--honey);color:var(--ink)}
+.kicker,.cardNum,.cardView{color:var(--rust)}
+.hero h1,.sectionIntro h2,.featureCopy h2,.candleBlock h2,.story h2,.contact h2{letter-spacing:-.055em}
+.hero h1 em,.story h2 em{color:var(--honey)}
+.heroStamp{background:var(--honey);color:var(--ink);box-shadow:0 16px 45px #20360e25}
+.ticker{background:var(--rust);border-color:#20360e;color:#f6f5f0}.ticker i{color:var(--honey)}
+.feature{background:var(--rust)}.featureCopy .kicker{color:var(--honey)}.featureCopy .pill{border-color:#f6f5f080}.featureCopy .pill:hover{color:var(--ink)}
+.candles{background:var(--sage)}.candleVisual{background:#dce5d5}.candleVisual:before{color:var(--rust)}
+.contact{background:var(--sage)}.float{background:var(--rust);border:1px solid #ffffff50;backdrop-filter:blur(14px);box-shadow:0 12px 36px #20360e30}.float:hover{background:var(--honey);color:var(--ink)}
+.card .cover{border-radius:3px}.cover:after{background:var(--honey);color:var(--ink)}
+/* top progress, curtain entry, staggered editorial copy */
+#scrollProgress{position:fixed;inset:0 auto auto 0;height:3px;width:0;background:var(--honey);z-index:1000;transform-origin:left}
+#pageCurtain{position:fixed;inset:0;background:var(--rust);z-index:999;pointer-events:none;animation:curtainLift .9s cubic-bezier(.76,0,.24,1) .15s forwards}
+#pageCurtain:after{content:'WICK & WHISKERS';position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:500 12px 'DM Sans',sans-serif;letter-spacing:.24em;color:var(--paper);white-space:nowrap;animation:curtainLabel .45s ease .25s forwards}
+@keyframes curtainLift{to{transform:translateY(-100%)}}
+@keyframes curtainLabel{to{opacity:0;transform:translate(-50%,-70%)}}
+.heroWords .kicker,.heroWords h1,.heroWords .heroCopy,.heroWords .heroActions,.heroWords .heroMeta{animation:heroRise .75s cubic-bezier(.2,.7,.2,1) both}
+.heroWords h1{animation-delay:.12s}.heroWords .heroCopy{animation-delay:.22s}.heroWords .heroActions{animation-delay:.32s}.heroWords .heroMeta{animation-delay:.42s}
+@keyframes heroRise{from{opacity:0;transform:translateY(26px);clip-path:inset(0 0 100% 0)}to{opacity:1;transform:none;clip-path:inset(0)}}
+.heroPhoto img,.featureVisual img{will-change:transform}.reveal-ready .reveal{transform:translateY(34px);filter:blur(2px)}.reveal-ready .reveal.visible{filter:none}
+@media(max-width:600px){#pageCurtain:after{font-size:10px}.heroWords h1{animation-delay:.08s}}
+@media(prefers-reduced-motion:reduce){#pageCurtain{display:none}.heroWords .kicker,.heroWords h1,.heroWords .heroCopy,.heroWords .heroActions,.heroWords .heroMeta{animation:none}}
 </style></head>
-<body>
+<body>\n<div id="scrollProgress" aria-hidden="true"></div><div id="pageCurtain" aria-hidden="true"></div>
 <div class="announce">Thoughtful little finds · cozy comforts for home & heart</div>
 <header><nav class="wrap"><a class="brand" href="#home"><span class="brandMark">✦</span><span><b>Wick & Whiskers</b><small>Co. · Little things, lovely moments</small></span></a><div class="navlinks"><a href="#bracelets">Bracelets</a><a href="#candles">Candles</a><a href="#story">Our story</a></div><a class="pill" href="https://wa.me/916363065642" target="_blank" rel="noopener">Enquire ↗</a></nav></header>
 <main>
@@ -43,7 +71,7 @@ dialog{padding:0;border:0;width:100vw;max-width:none;height:100dvh;max-height:no
 <a class="float" href="https://wa.me/916363065642" target="_blank" rel="noopener">WhatsApp ↗</a>
 <dialog id="productDialog" aria-label="Product photo gallery"><div class="viewer"><div class="viewerStage"><div class="viewerTop">Wick & Whiskers · Product gallery</div><button class="viewerNav" id="prev" aria-label="Previous photo">‹</button><img id="modalImage" alt="" title="Click to zoom"><button class="viewerNav" id="next" aria-label="Next photo">›</button><div class="thumbs" id="thumbs"></div></div><div class="viewerInfo"><button class="close" id="close" aria-label="Close gallery">×</button><div class="index" id="modalIndex"></div><h2 id="modalTitle"></h2><p id="modalDesc"></p><div class="viewerCount" id="modalCount"></div><a class="pill" id="orderLink" target="_blank" rel="noopener">Enquire about this bracelet ↗</a></div></div></dialog>
 <script>
-const products=[
+const progress=document.getElementById('scrollProgress');function updateProgress(){const max=document.documentElement.scrollHeight-window.innerHeight;progress.style.width=(max>0?window.scrollY/max*100:0)+'%'}window.addEventListener('scroll',updateProgress,{passive:true});window.addEventListener('resize',updateProgress);updateProgress();\nconst products=[
 {id:1,name:'Interlock Gold Cuff',desc:'An open gold-tone cuff with a sculptural interlocking detail.',images:['1 of Front.jpg','1 of side.jpg','1 of Top.jpg','1 of top measurement.jpg']},
 {id:2,name:'Double Heart Cuff',desc:'A delicate gold-tone cuff finished with two open hearts.',images:['2 of front.jpg','2 of side.jpg','2 of top.jpg','2 of top measurement.jpg']},
 {id:3,name:'Sculpted Gold Cuff',desc:'A minimal gold-tone cuff with a softly sculpted finish.',images:['3 of front.jpg','3 of side.jpg','3 of top.jpg','3 of top measurement.jpg']},
